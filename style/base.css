@@ -3,3 +3,10 @@
 
     https://jupyterlab.readthedocs.io/en/stable/developer/css.html
 */
+.jp-Timer-Green {
+    color: #00ff00;
+  }
+  .jp-Timer-Red {
+    color: #ff0000;
+  }
+  
