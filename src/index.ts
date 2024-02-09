@@ -34,10 +34,11 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
     var timer = 30;
 
-    await settingsRegistry.load(plugin.id);
-
+    const settings = await settingsRegistry.load(plugin.id);
+    let text = settings.get('text').composite as string;
+   
     const textNode = document.createElement('div');
-    textNode.textContent = timer.toString();
+    textNode.textContent = text;
 
     toolbarRegistry.addFactory('ServerTimer', 'notification', () => {
       const textWidget = new Widget({ node: textNode });
