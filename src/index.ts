@@ -9,6 +9,8 @@ import {
 
 import { Widget } from '@lumino/widgets';
 
+import { ISettingRegistry } from '@jupyterlab/settingregistry';
+
 import '../style/index.css';
 
 const SERVER_TIMER = 'jp-Server-Timer';
@@ -22,19 +24,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-server-timer:plugin',
   description: 'A JupyterLab extension that displays the remaining server run time in the top bar.',
   autoStart: true,
-  requires: [IToolbarWidgetRegistry],
+  requires: [ISettingRegistry, IToolbarWidgetRegistry],
   activate: async (
     app: JupyterFrontEnd,
+    settingsRegistry: ISettingRegistry,
     toolbarRegistry: IToolbarWidgetRegistry
   ): Promise<void> => {
     console.log('JupyterLab extension jupyterlab-server-timer is activated!');
 
     var timer = 30;
 
+    await settingsRegistry.load(plugin.id);
+
     const textNode = document.createElement('div');
     textNode.textContent = timer.toString();
 
-    toolbarRegistry.addFactory('ServerTimer', 'text', () => {
+    toolbarRegistry.addFactory('ServerTimer', 'notification', () => {
       const textWidget = new Widget({ node: textNode });
       textWidget.addClass(SERVER_TIMER)
       return textWidget;

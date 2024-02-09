@@ -1,0 +1,16 @@
+{
+  "title": "User Menu Bar",
+  "description": "User Menu Bar",
+  "jupyter.lab.toolbars": {
+    "ServerTimer": [
+      {
+        "name": "notification",
+        "rank": 110
+      }
+    ]
+  },
+  "properties": {
+  },
+  "additionalProperties": false,
+  "type": "object"
+}

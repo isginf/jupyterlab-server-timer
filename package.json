@@ -98,6 +98,7 @@
     },
     "jupyterlab": {
         "extension": true,
+        "schemaDir": "schema",
         "outputDir": "jupyterlab_server_timer/labextension"
     },
     "eslintIgnore": [
