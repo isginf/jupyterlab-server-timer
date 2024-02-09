@@ -24,10 +24,13 @@ const plugin: JupyterFrontEndPlugin<void> = {
     statusBar: IStatusBar
   ): Promise<void> => {
 
-    const textNode = document.createElement('div');
-    textNode.textContent = "xxx";
+    const divNode = document.createElement('div');
+    const spanNode = document.createElement('div');
+    divNode.appendChild(spanNode)
 
-    const statusWidget = new Widget({ node: textNode });
+    spanNode.textContent = "xxx";
+
+    const statusWidget = new Widget({ node: divNode });
 
     statusBar.registerStatusItem('lab-status', {
       align: 'middle',
@@ -40,7 +43,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     
     setInterval(() => {
       timer = timer - 1;
-      textNode.textContent = timer.toString();
+      spanNode.textContent = timer.toString();
       /*if (timer < 20) {
         textNode.addClass(TOPBAR_TIMER_RED);
       }*/
