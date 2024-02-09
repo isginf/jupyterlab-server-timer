@@ -40,7 +40,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-server-timer:plugin',
   description: 'A JupyterLab extension that displays the remaining server run time in the top bar.',
   autoStart: true,
-  requires: [ISettingRegistry, IToolbarWidgetRegistry],
+  requires: [ISettingRegistry, ICommandPalette, IToolbarWidgetRegistry],
   activate: async (
     app: JupyterFrontEnd,
     palette: ICommandPalette,
