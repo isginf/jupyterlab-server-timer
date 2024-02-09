@@ -26,7 +26,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   activate: async (
     app: JupyterFrontEnd,
     toolbarRegistry: IToolbarWidgetRegistry
-  ) => {
+  ): Promise<void> => {
     console.log('JupyterLab extension jupyterlab-server-timer is activated!');
 
     var timer = 30;
