@@ -51,12 +51,12 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
     var timer = 30;
 
-    const settings = await settingsRegistry.load(plugin.id);
+    /*const settings = await settingsRegistry.load(plugin.id);
     let text = settings.get('text').composite as string;
-    let editable = settings.get('editable').composite as boolean;
+    let editable = settings.get('editable').composite as boolean;*/
 
     const textNode = document.createElement('div');
-    textNode.textContent = text;
+    textNode.textContent = "xxx";
 
     toolbarRegistry.addFactory('ServerTimer', 'notification', () => {
       const textWidget = new Widget({ node: textNode });
@@ -80,7 +80,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     });
 
     function showUpdateTextDialog() {
-      const oldText = settings.get('text').composite as string;
+      const oldText = "xxx";
       showDialog({
         title: 'Edit Top Bar Text',
         body: new EditHandler(oldText),
@@ -103,7 +103,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       execute: (args: any) => {
         showUpdateTextDialog();
       },
-      isEnabled: () => editable,
+      isEnabled: () => true,
     });
 
     if (palette) {
@@ -112,11 +112,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     }
 
     app.restored.then(() => {
-      settings.changed.connect(async () => {
-        text = settings.get('text').composite as string;
-        editable = settings.get('editable').composite as boolean;
-        textNode.textContent = text;
-      });
+      
     });
   }
 };
