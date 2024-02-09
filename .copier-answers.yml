@@ -5,7 +5,7 @@ author_email: stefan.walter@inf.ethz.ch
 author_name: Stefan Walter
 has_binder: false
 has_settings: false
-kind: frontend
+kind: server
 labextension_name: jupyterlab-server-timer
 project_short_description: A JupyterLab extension that displays the remaining server
     run time in the top bar.

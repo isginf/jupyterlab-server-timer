@@ -40,6 +40,10 @@ jobs:
         set -eux
         python -m pip install .[test]
 
+        pytest -vv -r ap --cov jupyterlab_server_timer
+        jupyter server extension list
+        jupyter server extension list 2>&1 | grep -ie "jupyterlab_server_timer.*OK"
+
         jupyter labextension list
         jupyter labextension list 2>&1 | grep -ie "jupyterlab-server-timer.*OK"
         python -m jupyterlab.browser_check
@@ -81,6 +85,9 @@ jobs:
 
         pip install "jupyterlab>=4.0.0,<5" jupyterlab_server_timer*.whl
 
+
+        jupyter server extension list
+        jupyter server extension list 2>&1 | grep -ie "jupyterlab_server_timer.*OK"
 
         jupyter labextension list
         jupyter labextension list 2>&1 | grep -ie "jupyterlab-server-timer.*OK"
