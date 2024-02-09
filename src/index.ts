@@ -25,7 +25,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   ): Promise<void> => {
 
     const divNode = document.createElement('div');
-    const spanNode = document.createElement('div');
+    const spanNode = document.createElement('span');
     divNode.appendChild(spanNode)
 
     spanNode.textContent = "xxx";
