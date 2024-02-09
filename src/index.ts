@@ -11,6 +11,8 @@ import { Widget } from '@lumino/widgets';
 
 import '../style/index.css';
 
+const SERVER_TIMER = 'jp-Server-Timer';
+
 /*const TOPBAR_TIMER_RED = 'jp-Timer-Red';*/
 
 /**
@@ -27,16 +29,16 @@ const plugin: JupyterFrontEndPlugin<void> = {
   ) => {
     console.log('JupyterLab extension jupyterlab-server-timer is activated!');
 
-    const textNode = document.createElement('div');
     var timer = 30;
-    
-    textNode.textContent = timer.toString();
 
-    toolbarRegistry.addFactory('TopBar', 'text', () => {
+    const textNode = document.createElement('div');
+        textNode.textContent = timer.toString();
+
+    toolbarRegistry.addFactory('ServerTimer', 'text', () => {
       const textWidget = new Widget({ node: textNode });
+      textWidget.addClass(SERVER_TIMER)
       return textWidget;
     });
-
 
     setInterval(() => {
       timer = timer - 1;
