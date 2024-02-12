@@ -31,13 +31,14 @@ const plugin: JupyterFrontEndPlugin<void> = {
         // Time stamp is always in UTC.
         let currentDate = new Date();
         let timestamp = (currentDate.getTime() / 1000) | 0;
-        var timer = ((data['end-time'] - timestamp) / 60) | 0;
+        var timer = (data['end-time'] - timestamp) | 0;
         console.log("JS Time: " + timestamp);
 
         function update_text() {
-          let hours = ((timer / 60) | 0).toString();
+          let remain = timer / 60;
+          let hours = ((remain / 60) | 0).toString();
           if (hours.length < 2) { hours = "0" + hours}
-          let minutes = ((timer % 60) | 0).toString();
+          let minutes = ((remain % 60) | 0).toString();
           if (minutes.length < 2) { minutes = "0" + minutes}
           let time = "<b>" + hours + ":" + minutes + "</b>";
 
