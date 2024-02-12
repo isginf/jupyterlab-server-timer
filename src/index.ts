@@ -30,20 +30,20 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
         let currentDate = new Date();
         let timestamp = (currentDate.getTime() / 1000) | 0;
-        var timer = data['end-time'] - timestamp;
+        var timer = ((data['end-time'] - timestamp) / 60) | 0;
             
         function update_text() {
           let hours = ((timer / 60) | 0).toString();
           if (hours.length < 2) { hours = "0" + hours}
           let minutes = ((timer % 60) | 0).toString();
-          if (minutes.length < 2) { minutes = "0" + hours}
+          if (minutes.length < 2) { minutes = "0" + minutes}
           let time = "<b>" + hours + ":" + minutes + "</b>";
 
           let text = "Time until server terminates: " + time;
-          if (timer < 0) {
-            text = "SERVER EXITS ANY MOMENT NOW!";
-            spanNode.classList.add(RED_TEXT);
-          } else if (timer < 300) {
+          if (timer < 15) {
+            text = "<b>SERVER EXITS ANY MOMENT NOW - SAVE YOUR WORK!</b>";
+          }
+          if (timer < 300) {
             if ((timer % 2) == 0) {
               spanNode.classList.add(RED_TEXT);
             } else {
