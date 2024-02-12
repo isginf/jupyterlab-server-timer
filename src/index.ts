@@ -33,7 +33,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
         let timestamp = (currentDate.getTime() / 1000) | 0;
         var timer = ((data['end-time'] - timestamp) / 60) | 0;
         console.log("JS Time: " + timestamp);
-        
+
         function update_text() {
           let hours = ((timer / 60) | 0).toString();
           if (hours.length < 2) { hours = "0" + hours}
@@ -43,7 +43,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
           let text = "Time until server terminates: " + time;
           if (timer < 15) {
-            text = "<b>SERVER EXITS ANY MOMENT NOW - SAVE YOUR WORK!</b>";
+            text = "<b>SERVER TERMINATES ANY MOMENT NOW - SAVE YOUR WORK!</b>";
           }
           if (timer < 120) {
             if ((timer % 2) == 0) {
