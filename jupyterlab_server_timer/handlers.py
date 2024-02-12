@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 
 from jupyter_server.base.handlers import APIHandler
@@ -7,12 +8,29 @@ import tornado
 
 start_time = datetime.now()
 
+SERVER_STARTUP_DELAY = 20
+
 class RouteHandler(APIHandler):
     @tornado.web.authenticated
     def get(self):
+
+        run_time = 3600
+        if 'JOB_RUN_TIME' in os.environ and os.environ['JOB_RUN_TIME'].isdigit():
+            run_time = int(os.environ['JOB_RUN_TIME'])
+
+        start_time = load_time = int(start_time.timestamp())
+        end_time = run_time + start_time - SERVER_STARTUP_DELAY
+
+        if 'JOB_START_TIME' in os.environ and os.environ['JOB_START_TIME'].isdigit():
+            start_time = int(os.environ['JOB_START_TIME'])
+            end_time = run_time + start_time
+
         self.finish(json.dumps({
             "comment": "Server life span.",
-            "server-start": int(start_time.timestamp())
+            "start-time": start_time,
+            "load-time": load_time,
+            "end-time": end_time,
+            "run-time": run_time
         }))
 
 def setup_handlers(web_app):
