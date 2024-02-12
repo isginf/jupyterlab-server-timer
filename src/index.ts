@@ -31,7 +31,8 @@ const plugin: JupyterFrontEndPlugin<void> = {
         let currentDate = new Date();
         let timestamp = (currentDate.getTime() / 1000) | 0;
         var timer = ((data['end-time'] - timestamp) / 60) | 0;
-            
+        console.log("JS time: " + timestamp);    
+        
         function update_text() {
           let hours = ((timer / 60) | 0).toString();
           if (hours.length < 2) { hours = "0" + hours}
