@@ -13,7 +13,7 @@ const RED_TEXT = "jl-server-timer-red"
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-server-timer:plugin',
-  description: 'A JupyterLab extension that displays the remaining server run time in the top bar.',
+  description: 'A JupyterLab extension that displays the remaining server run time in the status bar.',
   autoStart: true,
   requires: [IStatusBar],  
   activate: (app: JupyterFrontEnd, statusBar: IStatusBar) => {
@@ -43,13 +43,16 @@ const plugin: JupyterFrontEndPlugin<void> = {
           if (timer < 15) {
             text = "<b>SERVER EXITS ANY MOMENT NOW - SAVE YOUR WORK!</b>";
           }
-          if (timer < 300) {
+          if (timer < 120) {
             if ((timer % 2) == 0) {
               spanNode.classList.add(RED_TEXT);
             } else {
               spanNode.classList.remove(RED_TEXT);
             }
           } 
+          else if (timer < 300) {
+            spanNode.classList.add(RED_TEXT);
+          }
           spanNode.innerHTML = text;
         }
     
