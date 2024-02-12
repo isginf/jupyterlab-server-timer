@@ -6,7 +6,7 @@ from jupyter_server.base.handlers import APIHandler
 from jupyter_server.utils import url_path_join
 import tornado
 
-start_time = datetime.now()
+server_load_time = datetime.now()
 
 SERVER_STARTUP_DELAY = 20
 
@@ -18,7 +18,7 @@ class RouteHandler(APIHandler):
         if 'JOB_RUN_TIME' in os.environ and os.environ['JOB_RUN_TIME'].isdigit():
             run_time = int(os.environ['JOB_RUN_TIME'])
 
-        start_time = load_time = int(start_time.timestamp())
+        start_time = load_time = int(server_load_time.timestamp())
         end_time = run_time + start_time - SERVER_STARTUP_DELAY
 
         if 'JOB_START_TIME' in os.environ and os.environ['JOB_START_TIME'].isdigit():
