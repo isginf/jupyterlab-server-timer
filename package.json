@@ -98,14 +98,14 @@
     },
     "jupyterlab": {
         "discovery": {
-        "server": {
-            "managers": [
-                "pip"
-            ],
-            "base": {
-                "name": "jupyterlab_server_timer"
+            "server": {
+                "managers": [
+                    "pip"
+                ],
+                "base": {
+                    "name": "jupyterlab_server_timer"
+                }
             }
-        }
         },
         "extension": true,
         "outputDir": "jupyterlab_server_timer/labextension"

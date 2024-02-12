@@ -20,7 +20,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   activate: (app: JupyterFrontEnd, statusBar: IStatusBar) => {
     console.log('JupyterLab extension jupyterlab-server-timer is activated!');
 
-    requestAPI<any>('get-example')
+    requestAPI<any>('get-life-span')
       .then(data => {
         console.log(data);
         
