@@ -6,7 +6,7 @@ from jupyter_server.base.handlers import APIHandler
 from jupyter_server.utils import url_path_join
 import tornado
 
-server_load_time = datetime.now()
+server_load_time = datetime.utcnow()
 
 SERVER_STARTUP_DELAY = 20
 
