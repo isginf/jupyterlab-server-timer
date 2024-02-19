@@ -18,9 +18,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   requires: [IStatusBar],
   activate: (app: JupyterFrontEnd, statusBar: IStatusBar) => {
-    console.log(
-      'JupyterLab extension jupyterlab-server-timer is activated!'
-    );
+    console.log('JupyterLab extension jupyterlab-server-timer is activated!');
     requestAPI<any>('get-life-span')
       .then(data => {
         const divNode = document.createElement('div');
