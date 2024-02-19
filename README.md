@@ -1,7 +1,7 @@
 # jupyterlab_server_timer
 
 [![Github Actions Status](https://github.com/isginf/jupyterlab-server-timer/workflows/Build/badge.svg)](https://github.com/isginf/jupyterlab-server-timer/actions/workflows/build.yml)
-A JupyterLab extension that displays the remaining server run time in the top bar.
+A JupyterLab extension that displays the remaining server run time in the status bar.
 
 This extension is composed of a Python package named `jupyterlab_server_timer`
 for the server extension and a NPM package named `jupyterlab-server-timer`
