@@ -18,10 +18,11 @@ const plugin: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   requires: [IStatusBar],
   activate: (app: JupyterFrontEnd, statusBar: IStatusBar) => {
+    console.log(
+      'JupyterLab extension jupyterlab-server-timer is activated!'
+    );
     requestAPI<any>('get-life-span')
       .then(data => {
-        console.log(data);
-
         const divNode = document.createElement('div');
         const spanNode = document.createElement('span');
         divNode.appendChild(spanNode);
