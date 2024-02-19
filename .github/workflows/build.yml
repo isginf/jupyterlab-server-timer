@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
 
     - name: Base Setup
       uses: jupyterlab/maintainer-tools/.github/actions/base-setup@main
@@ -57,7 +57,7 @@ jobs:
         pip uninstall -y "jupyterlab_server_timer" jupyterlab
 
     - name: Upload extension packages
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@main
       with:
         name: extension-artifacts
         path: dist/jupyterlab_server_timer*
@@ -69,11 +69,11 @@ jobs:
 
     steps:
     - name: Install Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@main
       with:
         python-version: '3.9'
         architecture: 'x64'
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@main
       with:
         name: extension-artifacts
     - name: Install and Test
@@ -103,13 +103,13 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
 
     - name: Base Setup
       uses: jupyterlab/maintainer-tools/.github/actions/base-setup@main
 
     - name: Download extension package
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@main
       with:
         name: extension-artifacts
 
@@ -126,7 +126,7 @@ jobs:
       run: jlpm install
 
     - name: Set up browser cache
-      uses: actions/cache@v3
+      uses: actions/cache@main
       with:
         path: |
           ${{ github.workspace }}/pw-browsers
@@ -143,7 +143,7 @@ jobs:
 
     - name: Upload Playwright Test report
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@main
       with:
         name: jupyterlab_server_timer-playwright-tests
         path: |
@@ -155,6 +155,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@main
       - uses: jupyterlab/maintainer-tools/.github/actions/check-links@main
