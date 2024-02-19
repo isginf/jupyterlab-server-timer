@@ -6,6 +6,7 @@ A JupyterLab extension that displays the remaining server run time in the status
 This extension is best paired with a spawner such as [batchspawner](https://github.com/jupyterhub/batchspawner). It allows the user to see when the job running the notebook is going to be terminated.
 
 The extension checks for two environment variables:
+
 - `JOB_START_TIME` contains a UTC timestamp of the start time of the job. If absent then the time when the notebook becomes ready is used instead. Since it can take a few seconds to start the notebook the time measurement will not be completely accurate in this case and a hard-wired safety margin of 20 seconds will be deduced from the runtime.
 - `JOB_RUN_TIME` contains the number of seconds the server will run. If absent the default is `3600`.
 

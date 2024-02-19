@@ -1,6 +1,6 @@
 {
     "name": "jupyterlab-server-timer",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A JupyterLab extension that displays the remaining server run time in the top bar.",
     "keywords": [
         "jupyter",
