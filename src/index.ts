@@ -29,7 +29,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
         spanNode.classList.add('jp-StatusBar-TextItem');
 
         function update_text() {
-
           // Time stamp is always in UTC.
           const now = new Date();
           const timestamp = (now.getTime() / 1000) | 0;
