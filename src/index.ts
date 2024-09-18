@@ -51,18 +51,18 @@ const plugin: JupyterFrontEndPlugin<void> = {
           const time = '<b>' + hours + ':' + minutes + '</b>';
 
           let text = 'Time until server terminates: ' + time;
-          if (timer < 15) {
+          if (remain < 15) {
             text = '<b>SERVER TERMINATES ANY MOMENT NOW - SAVE YOUR WORK!</b>';
           }
 
           // Red and blinking text to catch attention.
-          if (timer < 120) {
-            if (timer % 2 === 0) {
+          if (remain < 120) {
+            if (remain % 2 === 0) {
               spanNode.classList.add(RED_TEXT);
             } else {
               spanNode.classList.remove(RED_TEXT);
             }
-          } else if (timer < 300) {
+          } else if (remain < 300) {
             spanNode.classList.add(RED_TEXT);
           }
           spanNode.innerHTML = text;
