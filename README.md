@@ -8,7 +8,7 @@ This extension is best paired with a spawner such as [batchspawner](https://gith
 The extension checks for two environment variables:
 
 - `JOB_START_TIME` contains a UTC timestamp of the start time of the job. If absent then the time when the notebook becomes ready is used instead. Since it can take a few seconds to start the notebook the time measurement will not be completely accurate in this case and a hard-wired safety margin of 20 seconds will be deduced from the runtime.
-- `JOB_RUN_TIME` contains the number of seconds the server will run. If absent the default is `3600`.
+- `JOB_RUN_TIME` contains the number of minutes the server will run. If absent the default is `60`.
 
 An modified example `batch_script.sh` for `slurmspawner` that sets the variables could look like this:
 
@@ -17,7 +17,7 @@ An modified example `batch_script.sh` for `slurmspawner` that sets the variables
 #SBATCH --export=JOB_START_TIME,JOB_RUN_TIME,{{keepvars}}
 ...
 export JOB_START_TIME=$(date +%s)
-export JOB_RUN_TIME={{runtime}}
+export JOB_RUN_TIME=90
 {{prologue}}
 {% if srun %}{{srun}} {% endif %}{{cmd}}
 {{epilogue}}
